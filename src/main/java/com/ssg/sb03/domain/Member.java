@@ -25,7 +25,7 @@ public class Member extends BaseEntity{
     private String email;
     private boolean del;
 
-    private boolean social;
+
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
@@ -51,5 +51,5 @@ public class Member extends BaseEntity{
         this.roleSet.clear();
     }
 
-    public void changeSocial(boolean social){this.social = social;}
+
 }

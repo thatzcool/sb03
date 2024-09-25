@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import com.ssg.sb03.security.handler.Custom403Handler;
 import com.ssg.sb03.security.handler.CustomSocialLoginSuccessHandler;
 
+
 import javax.sql.DataSource;
 
 @Configuration
@@ -28,16 +30,12 @@ import javax.sql.DataSource;
 public class CustomSecurityConfig {
 
     private final DataSource dataSource;
-
     private final UserDetailsService userDetailsService;
-
-
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http)throws Exception {
@@ -71,13 +69,7 @@ public class CustomSecurityConfig {
             httpSecurityExceptionHandlingConfigurer.accessDeniedHandler(accessDeniedHandler());
         });
 
-        http.oauth2Login( httpSecurityOAuth2LoginConfigurer -> {
-            httpSecurityOAuth2LoginConfigurer.loginPage("/member/login");
-            httpSecurityOAuth2LoginConfigurer.successHandler(authenticationSuccessHandler());
-        });
-
-
-        return http.build();
+               return http.build();
     }
 
     @Bean

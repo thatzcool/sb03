@@ -19,12 +19,12 @@ public class MemberSecurityDTO extends User  {
     private String mpw;
     private String email;
     private boolean del;
-    private boolean social;
+
     private String username;
 
-    private Map<String, Object> props; //소셜 로그인 정보
 
-    public MemberSecurityDTO(String username, String password, String email, boolean del, boolean social,
+
+    public MemberSecurityDTO(String username, String password, String email, boolean del,
                              Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
 
@@ -32,14 +32,11 @@ public class MemberSecurityDTO extends User  {
         this.mpw = password;
         this.email = email;
         this.del = del;
-        this.social = social;
+
         this.username = username;
 
     }
 
-    public Map<String, Object> getAttributes() {
-        return this.getProps();
-    }
 
 
     public String getName() {
